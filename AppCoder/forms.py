@@ -4,17 +4,36 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-class CursoFormulario(forms.Form):
+class TareaFormulario(forms.Form):
     #Especificar los campos
-    curso = forms.CharField()
-    camada = forms.IntegerField()
+    tarea = forms.CharField()
+    personal_asignado = forms.CharField()
+    nombre_equipo = forms.CharField()
+    comienzo_de_trabajo= forms.DateField()
+    final_de_trabajo = forms.DateField()
 
+class EquiposFormulario(forms.Form):
+    #Especificar los campos
+    nombre = forms.CharField()
+    marca = forms.CharField()
+    modelo = forms.CharField()
+    numero_de_serie= forms.CharField()
+    numero_de_motor = forms.CharField()
 
-class ProfesorFormulario(forms.Form):   
+class PersonalFormulario(forms.Form):   
     nombre= forms.CharField(max_length=30)
     apellido= forms.CharField(max_length=30)
+    legajo= forms.IntegerField()
     email= forms.EmailField()
+    equipo_asignado= forms.CharField(max_length=30)
     profesion= forms.CharField(max_length=30)
+
+
+class StockFormulario(forms.Form):   
+    nombreotipo= forms.CharField(max_length=30)
+    fechadeingreso= forms.DateField()
+    cantidadaingresar= forms.IntegerField()
+    numerodeparte= forms.CharField(max_length=30)
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()

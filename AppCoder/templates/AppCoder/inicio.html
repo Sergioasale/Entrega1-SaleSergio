@@ -6,14 +6,14 @@
 
 
     <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Este es el título del Inicio que cambio</h1>
+    <h1>Bienvenidos a la pagina del taller</h1>
   
 
-    <h3>Podes buscar una camada:</h3>
+    <h3>Podes buscar un equipo:</h3>
 
     <form action="/AppCoder/buscar/" method="GET">
 
-        <input type="number" name="camada" id="camada">
+        <input type="number" name="nombre_equipo" id="nombre_equipo">
 
         <input type="submit" value="Buscar">
 
@@ -24,14 +24,14 @@
 
     
 
-    {% if cursos %}
+    {% if tareas %}
 
-    <p>Estamos buscando el: {{camada}}</p>
+    <p>Estamos buscando el: {{nombre_equipo}}</p>
 
     <ul>
-	{% for curso in cursos %}
-		<li> {{curso.nombre}} </li>
-		<li> {{curso.camada}} </li>
+	{% for tarea in tareas %}
+		<li> {{tarea.actividad}} </li>
+		<li> {{tarea.nombre_equipo} </li>
 	{% endfor %}
 
     </ul>

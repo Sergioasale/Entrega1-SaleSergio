@@ -1,30 +1,37 @@
 from django.db import models
 
+# Create your models here.
+class Tarea(models.Model):
+
+    tarea=models.CharField(max_length=40)
+    personal_asignado=models.CharField(max_length=40)
+    nombre_equipo = models.CharField(max_length=40)
+    comienzo_de_trabajo=models.CharField(max_length=40)
+    fin_de_trabajo=models.CharField(max_length=40)
+
+    def __str__(self):
+        return f"tarea: {self.tarea} - personal_asignado {self.personal_asignado} - nombre_equipo {self.nombre_equipo} - comienzo_de_trabajo {self.comienzo_de_trabajo} - fin_de_trabajo {self.fin_de_trabajo} "
+
+class Equipos(models.Model):
+    nombre= models.CharField(max_length=30)
+    marca= models.CharField(max_length=30)
+    modelo= models.CharField(max_length=30)
+    numero_de_serie= models.CharField(max_length=30)
+    numero_de_motor=models.PositiveBigIntegerField()
+
 class Personal(models.Model):
     nombre= models.CharField(max_length=30)
     apellido= models.CharField(max_length=30)
-    Legajo= models.PositiveIntegerField (default=0)
-    Email= models.EmailField()
-    Equipo_asignado= models.CharField(max_length=30)
+    legajo= models.PositiveIntegerField()
+    email= models.EmailField()
+    equipo_asignado= models.CharField(max_length=30)
     profesion= models.CharField(max_length=30)
 
-class Equipos(models.Model):
-    Nombre= models.CharField(max_length=30)
-    Marca= models.CharField(max_length=30)
-    Modelo= models.CharField(max_length=30)
-    Numero_de_serie= models.PositiveIntegerField (default=0)
-    Numero_de_motor= models.PositiveIntegerField (default=0)
-    
-class Tareas(models.Model):
-    Trabajo_a_realizar= models.CharField(max_length=30)
-    Personal_Asignado= models.CharField(max_length=30)
-    Equipo= models.CharField(max_length=30)
-    Comienzo_de_trabajo= models.DateField()
-    Final_de_trabajo= models.DateField()
-    
-class Ingreso_Materiales(models.Model):
-    NombreOtipo= models.CharField(max_length=30)
-    FechaDeIngreso = models.DateField()
-    CantidadAIngresar= models.PositiveIntegerField (default=0)
-    NumeroDeParte= models.CharField(max_length=30)
+    def __str__(self):
+        return f"Nombre: {self.nombre} - Apellido {self.apellido} - E-Mail {self.email} - Profesión {self.profesion}"
 
+class Stock(models.Model):
+    nombreotipo= models.CharField(max_length=30)
+    fechadeingreso = models.DateField()  
+    cantidadaingresar = models.PositiveIntegerField()
+    numerodeparte= models.PositiveIntegerField()
