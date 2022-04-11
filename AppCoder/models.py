@@ -5,7 +5,7 @@ class Tarea(models.Model):
 
     tarea=models.CharField(max_length=40)
     personal_asignado=models.CharField(max_length=40)
-    nombre_equipo = models.CharField(max_length=40)
+    nombre_equipo = models.IntegerField(max_length=40)
     comienzo_de_trabajo=models.CharField(max_length=40)
     fin_de_trabajo=models.CharField(max_length=40)
 

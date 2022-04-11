@@ -8,9 +8,9 @@ class TareaFormulario(forms.Form):
     #Especificar los campos
     tarea = forms.CharField()
     personal_asignado = forms.CharField()
-    nombre_equipo = forms.CharField()
-    comienzo_de_trabajo= forms.DateField()
-    final_de_trabajo = forms.DateField()
+    nombre_equipo = forms.IntegerField()
+    comienzo_de_trabajo= forms.DateTimeField()
+    final_de_trabajo = forms.DateTimeField()
 
 class EquiposFormulario(forms.Form):
     #Especificar los campos

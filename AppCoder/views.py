@@ -1,7 +1,7 @@
 from django.http.request import QueryDict
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponse
-from AppCoder.models import Tarea, Personal, Equipos, Stock
+from AppCoder.models import Tarea, Personal #Equipos, Stock
 from AppCoder.forms import TareaFormulario, PersonalFormulario, UserRegisterForm
 
 #Para el login
@@ -14,9 +14,9 @@ from django.contrib.auth.decorators import login_required
 
 def tarea(request):
 
-      tarea =  Tarea(tarea="reparar equipo", nombre_equipo="vyo 105")
+      tarea =  Tarea(tarea="reparar equipo", nombre_equipo="105")
       tarea.save()
-      documentoDeTexto = f"--->Tarea: {tarea.nombre}   nombre_equipo: {tarea.nombre_equipo}"
+      documentoDeTexto = f"--->Tarea: {tarea.tarea}   nombre_equipo: {tarea.nombre_equipo}   personal_asignado: {tarea.personal_asignado}"
 
 
       return HttpResponse(documentoDeTexto)
@@ -50,7 +50,7 @@ def tareas(request):
 
                   informacion = miFormulario.cleaned_data
 
-                  tarea = Tarea (nombre=informacion['tarea'], nombre_equipo=informacion['nombre_equipo']) 
+                  tarea = Tarea (tarea=informacion['tarea'], nombre_equipo=informacion['nombre_equipo']) 
 
                   tarea.save()
 
@@ -99,9 +99,9 @@ def buscar(request):
 
       if  request.GET["nombre_equipo"]:
 
-	      #respuesta = f"Estoy buscando la camada nro: {request.GET['camada'] }" 
+	      #respuesta = f"Estoy buscando el equipo nro: {request.GET['camada'] }" 
             nombre_equipo = request.GET['nombre_equipo'] 
-            tareas = tareas.objects.filter(nombre_equipo__icontains=nombre_equipo)
+            tareas = Tarea.objects.filter(nombre_equipo__icontains=nombre_equipo)
 
             return render(request, "AppCoder/inicio.html", {"tareas":tareas, "nombre_equipo":nombre_equipo})
 
