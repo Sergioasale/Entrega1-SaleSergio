@@ -10,4 +10,6 @@ admin.site.register(Equipos)
 
 admin.site.register(Personal)
 
-admin.site.register(Stock)
+admin.site.register(Stocks)
+
+admin.site.register(Avatar)

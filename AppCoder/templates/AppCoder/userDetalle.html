@@ -1,0 +1,16 @@
+{% extends 'AppCoder/padre.html'%}  
+{% load static %}
+{% block contenidoQueCambia %}
+<h3>Tu Perfil</h3>
+
+    <p>usuario: <i>{{ user.username}}</i></p>
+    <p>nombre: <i>{{ user.first_name}}</i></p>
+    <p>apellido: <i>{{ user.last_name}}</i></p>
+    <p>email: <i>{{ user.email }}</i></p>
+    
+    <p>
+        <a href="{% url 'EditarPerfil' %}">Editar Perfil</a> |
+        <a href="{% url 'Inicio' %}">Regresar</a>
+    </p>
+
+{% endblock %}

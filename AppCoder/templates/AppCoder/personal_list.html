@@ -1,0 +1,29 @@
+{% extends 'AppCoder/padre.html'%}  
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <h1>Personal del taller</h1>
+    <ul>
+        {% for personal in object_list %}
+
+            <li>
+                <p>NOMBRE: {{ personal.nombre }} APELLIDO: {{personal.apellido}} ESPECIALIDAD {{personal.profesion}}</p>
+                <p> 
+                    <a href="{% url 'PDetail' personal.id %}">Ver</a> | 
+                    <a href="{% url 'PEdit' personal.id %}">Editar</a> | 
+                    <a href="{% url 'PDelete' personal.id %}">Borrar</a> 
+                
+                </p> 
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'PNew'  %}">Nuevo</a> | 
+
+    <br>
+
+    <button>
+        <a href="{% url 'Inicio'  %}">Volver</a>
+    </button>
+{% endblock %}

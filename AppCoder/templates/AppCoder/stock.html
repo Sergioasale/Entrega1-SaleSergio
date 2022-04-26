@@ -6,8 +6,29 @@
 
 
     <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Stock</h1>
-    <p>Aquí tenemos info del stock</p>
+
+    <h1>Formulario para ingreso de stock</h1>
+    <div></div>
+
+    <a href="https://www.blog.autologica.com/wp-content/uploads/2014/08/stock-de-repuestos-1024x455.jpg"><img src="https://www.blog.autologica.com/wp-content/uploads/2014/08/stock-de-repuestos-1024x455.jpg" alt="foto-stock" height="250 px" width="550 px" border="3"></a>  
+    <h3>Por favor ingrese los datos solicitados</h3>
+
+    {% if miFormulario.errors %}
+
+    <p style="color: red;"> Están mal los datos, revisar</p>
+
+    {% endif %}
+    <form action="" method="POST">{% csrf_token %}
+
+        <!-- Acá está la magia de Django-->
+        
+        <table>
+            {{ miFormulario.as_table }}
+        </table>
+
+        <input type="submit", value="Enviar">
+
+    </form>
 
   
 

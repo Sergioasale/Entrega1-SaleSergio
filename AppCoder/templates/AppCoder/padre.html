@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Inicio</title>
+        <title>Taller de mantenimiento</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{%static 'AppCoder/assets/favicon.ico' %}" />
         <!-- Bootstrap icons-->
@@ -16,32 +16,67 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{%static 'AppCoder/css/styles.css' %}" rel="stylesheet" />
-
+        <link href="{%static 'AppCoder\assets\css\styles.css' %}" rel="stylesheet" />
 
     </head>
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>´
+                <a class="navbar-brand" href="{% url 'Inicio' %}"><span class="text-primary" style="font-size:30px;">TALLER DE MANTENIMIENTO</span> </a>
+
+
+
+    <form action="/AppCoder/buscar/" method="GET">
+
+        
+        <input type="number" name="nombre_equipo" id="nombre_equipo" value="" placeholder="Buscar equipo VyO..." maxlength="100" autocomplete="off" aria-label="Buscar equipo VyO...">
+
+        <input type="submit" value="Buscar">
+
+
+
+
+    </form>
+                
                 <a class="navbar-brand" href="{% url 'Personal' %}">Personal</a>
                 <a class="navbar-brand" href="{% url 'Tareas' %}">Tareas</a>
                 <a class="navbar-brand" href="{% url 'Equipos' %}">Equipos</a>
                 <a class="navbar-brand" href="{% url 'Stock' %}">Stock</a>
-                <a class="btn btn-primary" href="#LogIn">INICIAR</a>
+                <a class="navbar-brand" href="{% url 'Index' %}">Index</a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/admin">ADMIN</a>
+                <li><a href="{% url 'AgregarAvatar' %}">Sumar un Avatar (Administrador)</a></li>
+
+                
+                {% if request.user.is_authenticated %}              
+                <p class="text-primary  mb-4 mb-lg-0 text-center"> Hola {{user.username}}</p>
+                <a class="btn text-muted small mb-4 mb-lg-0" href="{% url 'UserDetalle' %}">Tu Perfil</a>
+                {% endif %}
+
+                <li class="nav-item">
+              {% if not request.user.is_authenticated %}
+              <a class="btn btn-primary ml-lg-3" href="{% url 'Register' %}">Registrate</a>
+              {% endif %}
+              {% if request.user.is_authenticated %}   
+              {% endif %}
+                </li>
+                
             </div>
         </nav>
 
 
         <!-- Masthead-->
-        <header class="masthead">
             <div class="container position-relative">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6">
-                        <div class="text-center text-white">
+                <div class="page-hero bg-image overlay-dark" style="background-image: url(https://www.plassertheurer.com/fileadmin/_processed_/9/b/csm_009_dyn_09_3x_CW_7ac15cc37e.jpg); height: 650px; width: 1100px;">
+                    <div class="hero-section"></div>
+                    <div class="row justify-content-center"></div>
+                    <div class="container text-center wow zoomIn" >
+                        <span class="subhead" style="color: black; -webkit-text-stroke:0.5px black; font-size: 50px; font-family: Hind,sans-serif;">TALLER DE MANTENIMIENTO</span>
+                        <h1 class="display-4" style="color: black; -webkit-text-stroke:0.5px black; font-size: 50px; font-family: Hind,sans-serif" >TRENES ARGENTINOS OPERACIONES</h1>
+                    </div>
+                </div>
+            </div>
                             <!-- Page heading-->
-                            <h1 class="mb-5">TALLER DE MANTENIMIENTO</h1>
                             <!-- Signup form-->
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -56,7 +91,8 @@
                 </div>
             </div>
         </header>
-       
+
+
 
 
         <!-- Esto es lo que va a cambiar-->
@@ -74,27 +110,35 @@
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">Ayuda</a></li>
+                            <li class="list-inline-item"><a href="{% url 'ayuda' %}">Ayuda</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contacto</a></li>
+                            <li class="list-inline-item"><a href="{% url 'about' %}">About Me</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item"><a href="{% url 'Logout' %}">Logout</a></li>
+
+
                       
                         </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Curso de Python - CoderHouse.</p>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Pagina Web Sergio Sale - CoderHouse.</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                                <a href="https://www.facebook.com/trenesargentinosop"><i class="bi-facebook fs-3"></i></a>
                             </li>
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                                <a href="https://twitter.com/TrenesArg"><i class="bi-twitter fs-3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                                <a href="https://www.instagram.com/trenesargentinosop/"><i class="bi-instagram fs-3"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
+                <div id="current_date"></p>
+                    <script>
+                    document.getElementById("current_date").innerHTML = Date();
+                    </script>
             </div>
         </footer>
         <!-- Bootstrap core JS-->

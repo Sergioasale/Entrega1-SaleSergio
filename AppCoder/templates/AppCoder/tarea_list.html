@@ -1,0 +1,42 @@
+{% extends 'AppCoder/padre.html'%}  
+{% load static %}
+{% block contenidoQueCambia %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas_List</title>
+</head>
+<body>
+
+    <h1>Tareas del Taller</h1>
+    <ul>
+        {% for curso in object_list %}
+
+            <li>
+                <p>TAREAS: {{ Tarea.tarea }} NOMBRE: {{ Tarea.nombre_equipo }} APELLIDO: {{Tarea.personal_asignado}}</p>
+                <p> 
+                    <a href="{% url 'tDetail' tarea.id %}">Ver</a> | 
+                    <a href="{% url 'tEdit' tarea.id %}">Editar</a> | 
+                    <a href="{% url 'tDelete' tarea.id %}">Borrar</a> 
+                
+                </p> 
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'tNew'  %}">Nuevo</a> | 
+
+    <br>
+
+    <button>
+        <a href="{% url 'Inicio'  %}">Volver</a>
+    </button>
+
+</body>
+</html>
+{% endblock %}
