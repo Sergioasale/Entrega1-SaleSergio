@@ -24,3 +24,5 @@ Desde el Admin podran crearse nuevos usuarios y registros para los 3 modelos.
 En el caso del personal el mismo se puede editar, eliminar o agregar nuevo desde la pagina, como tambien se podra editar desde el admin del mismo.
 
 Se encuentra un apartado index con los vinculos existentes.
+
+LINK DEL VIDEO : https://youtu.be/VW3Fbox4nyA
